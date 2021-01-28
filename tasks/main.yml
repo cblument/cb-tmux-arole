@@ -1,0 +1,19 @@
+---
+- include: "{{ ansible_distribution }}/main.yml"
+
+- name: create plugin directory
+  file:
+    path: "{{ plugin_path }}"
+    owner: "{{ lookup('env', 'USER') }}"
+    state: directory
+
+- name: clone plugins
+  git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "{{ plugin_path }}/tpm"
+
+- name: setup tmux.conf
+  template:
+    src: tmux.conf.j2
+    dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
+
