@@ -4,7 +4,7 @@
 - name: create plugin directory
   file:
     path: "{{ plugin_path }}"
-    owner: "{{ lookup('env', 'USER') }}"
+    owner: "{{ ansible_user_id}}"
     state: directory
 
 - name: clone plugins
@@ -15,5 +15,5 @@
 - name: setup tmux.conf
   template:
     src: tmux.conf.j2
-    dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
 

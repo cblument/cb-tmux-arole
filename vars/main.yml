@@ -1,4 +1,4 @@
-plugin_path: "{{ lookup('env', 'HOME') }}/.tmux/plugins"
+plugin_path: "{{ ansible_user_dir }}/.tmux/plugins"
 
 plugins:
 - tmux-resurrect
