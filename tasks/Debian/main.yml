@@ -1,0 +1,8 @@
+---
+- name: Install tmux
+  apt:
+    name: tmux
+    state: present
+    cache_valid_time: 900
+    update_cache: yes
+  become: yes
